@@ -6,7 +6,8 @@ import Loading from './loading'
 async function getGenres() {
   try {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-    const response = await fetch(`${apiUrl}/genres`, {
+    // 👇 UBAH KE /anime/genre
+    const response = await fetch(`${apiUrl}/anime/genre`, {
       next: { revalidate: 86400 }
     });
     
@@ -15,7 +16,7 @@ async function getGenres() {
     }
     
     const result = await response.json();
-    return result.genres || [];
+    return result.genres || []; // Sesuaikan struktur
   } catch (error) {
     console.error("Error fetching genres:", error);
     return [];
@@ -25,7 +26,8 @@ async function getGenres() {
 async function getSampleAnimeForGenre(slug) {
   try {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-    const response = await fetch(`${apiUrl}/genre/${slug}?page=1`, {
+    // 👇 UBAH KE /anime/genre/[slug]
+    const response = await fetch(`${apiUrl}/anime/genre/${slug}?page=1`, {
       next: { revalidate: 86400 }
     });
     
