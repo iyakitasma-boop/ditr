@@ -6,7 +6,8 @@ import Loading from './loading'
 async function getAnimeByGenre(slug, page = 1) {
   try {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-    const response = await fetch(`${apiUrl}/genre/${slug}?page=${page}`, {
+    // 👇 UBAH KE /anime/genre/[slug]
+    const response = await fetch(`${apiUrl}/anime/genre/${slug}?page=${page}`, {
       next: { revalidate: 3600 }
     });
     
@@ -15,7 +16,10 @@ async function getAnimeByGenre(slug, page = 1) {
     }
     
     const result = await response.json();
-    return result;
+    return {
+      animes: result.animes || [],
+      pagination: result.pagination || { hasNext: false, hasPrev: false }
+    };
   } catch (error) {
     console.error("Error fetching anime by genre:", error);
     return { animes: [], pagination: { hasNext: false, hasPrev: false } };
