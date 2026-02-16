@@ -4,7 +4,7 @@
 import { getServerSession } from "next-auth";
 import prisma from "@/app/libs/prisma"; // Pastikan path ini benar
 import { redirect } from "next/navigation";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/libs/auth-options";
 import Navigation from "@/app/components/Navigation";
 import BreadcrumbNavigation from "@/app/components/BreadcrumbNavigation";
 
