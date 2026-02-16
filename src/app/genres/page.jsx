@@ -1,6 +1,6 @@
 // app/genres/page.js
 import { Suspense } from 'react'
-import GenresClient from './GenresClient'
+import GenresClient from './GenresClient' // UDAH DIBIKIN SEBELUMNYA
 import Loading from './loading'
 
 async function getGenres() {
